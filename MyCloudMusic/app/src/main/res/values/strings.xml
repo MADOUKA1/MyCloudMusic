@@ -2,4 +2,5 @@
     <string name="app_name">MyCloudMusic</string>
     <string name="copyright">Copyright @ 2020 Yangw. All rights Reserved</string>
     <string name="login_or_register">登录/注册</string>
+    <string name="experience_now">立即体验</string>
 </resources>
