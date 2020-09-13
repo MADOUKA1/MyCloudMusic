@@ -5,8 +5,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.viewpager.widget.ViewPager;
+
 import yangwu.bilibili.mycloudmusic.MainActivity;
 import yangwu.bilibili.mycloudmusic.R;
+import yangwu.bilibili.mycloudmusic.adapter.GuideAdapter;
 import yangwu.bilibili.mycloudmusic.fragment.GuideFragment;
 
 public class GuideActivity extends BaseCommonActivity implements View.OnClickListener {
@@ -14,6 +17,8 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
     private static final String TAG = "GuideActivity";
     private Button bt_login_or_register;
     private Button bt_enter;
+    private ViewPager vp;
+    private GuideAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +34,15 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
         //控件绑定
         bt_enter = findViewById(R.id.bt_enter);
         bt_login_or_register = findViewById(R.id.bt_login_or_register);
+        vp = findViewById(R.id.vp);
+    }
 
-        //显示fragment
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, GuideFragment.newInstance(R.drawable.guide2)).commit();
+    @Override
+    protected void initDatum() {
+        super.initDatum();
+        //创建适配器
+        adapter = new GuideAdapter(getSupportFragmentManager());
+        vp.setAdapter(adapter);
     }
 
     @Override
