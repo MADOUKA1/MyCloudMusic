@@ -19,7 +19,7 @@ import yangwu.bilibili.mycloudmusic.util.Constant;
 /**
  * 引导界面fragment
  */
-public class GuideFragment extends Fragment {
+public class GuideFragment extends BaseCommonFragment {
 
     private ImageView iv;
 
@@ -49,28 +49,29 @@ public class GuideFragment extends Fragment {
      * @return
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    protected View getLayoutView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_guide, container, false);
+    }
+
+    @Override
+    protected void initViews() {
+        super.initViews();
+        //找控件
+        iv = findViewById(R.id.iv);
     }
 
     /**
      * View创建后取数据
      */
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //找控件
-        iv = getView().findViewById(R.id.iv);
-
+    protected void initDatum() {
+        super.initDatum();
         //取出Bundle中的数据
         int id = getArguments().getInt(Constant.ID,-1);
         if(id == -1){
             getActivity().finish();
             return;
         }
-
         //设置图片
         iv.setImageResource(id);
     }

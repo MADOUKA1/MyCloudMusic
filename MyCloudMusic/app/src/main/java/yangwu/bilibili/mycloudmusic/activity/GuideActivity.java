@@ -1,6 +1,7 @@
 package yangwu.bilibili.mycloudmusic.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,6 +11,7 @@ import yangwu.bilibili.mycloudmusic.fragment.GuideFragment;
 
 public class GuideActivity extends BaseCommonActivity implements View.OnClickListener {
 
+    private static final String TAG = "GuideActivity";
     private Button bt_login_or_register;
     private Button bt_enter;
 
@@ -17,9 +19,6 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
-        initViews();
-        initListeners();
-        initDatum();
     }
 
     @Override
@@ -39,6 +38,7 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
 
     @Override
     protected void initListeners() {
+        Log.d(TAG, "initListeners: " + bt_enter);
         super.initListeners();
         bt_enter.setOnClickListener(this);
         bt_login_or_register.setOnClickListener(this);

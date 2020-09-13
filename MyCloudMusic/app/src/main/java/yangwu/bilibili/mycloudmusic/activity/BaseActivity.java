@@ -2,6 +2,7 @@ package yangwu.bilibili.mycloudmusic.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,13 +30,12 @@ public class BaseActivity extends AppCompatActivity {
     /**
      * 在onCreate方法后调用,页面初始化
      * @param savedInstanceState
-     * @param persistentState
      */
     @Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
+    public void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        initViews();
         initDatum();
         initListeners();
-        initViews();
     }
 }

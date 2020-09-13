@@ -46,8 +46,6 @@ public class SplashActivity extends BaseCommonActivity {
         setContentView(R.layout.activity_splash);
         //设置全屏
         fullScreen();
-        //初始化数据，判断是否显示引导界面
-        initDatum();
         //延时3秒
         handler.postDelayed(new Runnable() {
             @Override
