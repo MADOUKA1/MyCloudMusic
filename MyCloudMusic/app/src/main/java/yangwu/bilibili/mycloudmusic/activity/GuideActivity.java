@@ -6,6 +6,7 @@ import android.widget.Button;
 
 import yangwu.bilibili.mycloudmusic.MainActivity;
 import yangwu.bilibili.mycloudmusic.R;
+import yangwu.bilibili.mycloudmusic.fragment.GuideFragment;
 
 public class GuideActivity extends BaseCommonActivity implements View.OnClickListener {
 
@@ -29,6 +30,11 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
         //控件绑定
         bt_enter = findViewById(R.id.bt_enter);
         bt_login_or_register = findViewById(R.id.bt_login_or_register);
+
+        //显示fragment
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, GuideFragment.newInstance(R.drawable.guide2)).commit();
     }
 
     @Override

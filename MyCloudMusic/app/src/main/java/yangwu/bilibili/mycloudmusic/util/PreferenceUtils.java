@@ -21,13 +21,28 @@ public class PreferenceUtils {
         //获取偏好设置
         preferences = this.context.getSharedPreferences(NAME, Context.MODE_PRIVATE);
     }
+
+    /**
+     * 判断是否显示引导界面
+     * @return
+     */
     public boolean isShowGuide(){
         return preferences.getBoolean(SHOW_GUIDE,true);
     }
+
+    /**
+     * 设置是否显示引导界面
+     * @param value
+     */
     public void setShowGuide(boolean value){
         preferences.edit().putBoolean(SHOW_GUIDE,value).commit();
     }
 
+    /**
+     * 设置工具类为单例模式
+     * @param context
+     * @return
+     */
     public static PreferenceUtils getInstance(Context context) {
         if(instance == null){
             instance = new PreferenceUtils(context);
