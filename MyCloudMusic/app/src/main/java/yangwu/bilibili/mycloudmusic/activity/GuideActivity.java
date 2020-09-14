@@ -7,6 +7,10 @@ import android.widget.Button;
 
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
 import yangwu.bilibili.mycloudmusic.MainActivity;
 import yangwu.bilibili.mycloudmusic.R;
 import yangwu.bilibili.mycloudmusic.adapter.GuideAdapter;
@@ -19,6 +23,7 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
     private Button bt_enter;
     private ViewPager vp;
     private GuideAdapter adapter;
+    private CircleIndicator ci;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +40,31 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
         bt_enter = findViewById(R.id.bt_enter);
         bt_login_or_register = findViewById(R.id.bt_login_or_register);
         vp = findViewById(R.id.vp);
+        //指示器
+        ci = findViewById(R.id.ci);
     }
 
     @Override
     protected void initDatum() {
         super.initDatum();
+        //准备数据
+        List<Integer> datum = new ArrayList<>();
+        datum.add(R.drawable.guide1);
+        datum.add(R.drawable.guide2);
+        datum.add(R.drawable.guide3);
+        datum.add(R.drawable.guide4);
+        datum.add(R.drawable.guide5);
         //创建适配器
-        adapter = new GuideAdapter(getSupportFragmentManager());
+        adapter = new GuideAdapter(getMainActivity(),getSupportFragmentManager());
+        //设置适配器
+        adapter.setDatum(datum);
         vp.setAdapter(adapter);
+
+        //指示器配合控件工作
+        ci.setViewPager(vp);
+
+        //注册数据源观察者
+        adapter.registerDataSetObserver(ci.getDataSetObserver());
     }
 
     @Override
