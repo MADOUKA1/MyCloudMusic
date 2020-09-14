@@ -4,6 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.LoginOrRegisterActivity">
+    <!--    顶部-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <!--        背景-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_login" />
+        <!--        logo-->
+        <ImageView
+            android:layout_width="@dimen/login_logo_width"
+            android:layout_height="@dimen/login_logo_height"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
+    <!--    底部-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_marginRight="@dimen/padding_large"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_color_primary_reverse"
+                android:text="@string/login"
+                android:textColor="@drawable/selector_text_color_primary" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_large"
+                android:background="@drawable/selector_color_primary_reverse"
+                android:text="@string/register"
+                android:textColor="@drawable/selector_text_color_primary" />
+        </LinearLayout>
+
+        <TextView
+            android:textColor="@color/light_grey"
+            android:layout_marginBottom="@dimen/padding_large"
+            android:layout_above="@+id/ll_other_login_container"
+            android:layout_centerHorizontal="true"
+            android:text="其他登录方式"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/ll_other_login_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/padding_large"
+            android:orientation="horizontal">
+
+            <include layout="@layout/fill" />
+            <!--                微信登录按钮-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/selector_login_wechat" />
+
+            <include layout="@layout/fill" />
+            <!--                qq登录按钮-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/selector_login_qq" />
+
+            <include layout="@layout/fill" />
+            <!--                微博登录按钮-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/selector_login_weibo" />
+            <include layout="@layout/fill" />
+            <!--                网易登录按钮-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/selector_login_netease" />
+            <include layout="@layout/fill"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
