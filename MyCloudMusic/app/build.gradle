@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    //将源码兼容版本设置为Java 8
+    //因为Butterknife需要Java 8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -38,5 +44,15 @@ dependencies {
     //请求网络相关
     //okhttp
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
+
+    //提供通过注解的方式找控件
+    //绑定方法
+    //https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    //material design依赖
+    //AppBarLayout在这里面
+    implementation 'com.google.android.material:material:1.0.0'
 
 }

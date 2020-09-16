@@ -10,21 +10,26 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import me.relex.circleindicator.CircleIndicator;
 import yangwu.bilibili.mycloudmusic.MainActivity;
 import yangwu.bilibili.mycloudmusic.R;
 import yangwu.bilibili.mycloudmusic.adapter.GuideAdapter;
 import yangwu.bilibili.mycloudmusic.fragment.GuideFragment;
 
-public class GuideActivity extends BaseCommonActivity implements View.OnClickListener {
+public class GuideActivity extends BaseCommonActivity {
 
     private static final String TAG = "GuideActivity";
-    private Button bt_login_or_register;
-    private Button bt_enter;
-    private ViewPager vp;
+    @BindView(R.id.bt_login_or_register)
+    Button bt_login_or_register;
+    @BindView(R.id.bt_enter)
+    Button bt_enter;
+    @BindView(R.id.vp)
+    ViewPager vp;
+    @BindView(R.id.ci)
+    CircleIndicator ci;
     private GuideAdapter adapter;
-    private CircleIndicator ci;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +41,6 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
         super.initViews();
         //隐藏状态栏
         hideStatusBar();
-        //控件绑定
-        bt_enter = findViewById(R.id.bt_enter);
-        bt_login_or_register = findViewById(R.id.bt_login_or_register);
-        vp = findViewById(R.id.vp);
-        //指示器
-        ci = findViewById(R.id.ci);
     }
 
     @Override
@@ -71,24 +70,18 @@ public class GuideActivity extends BaseCommonActivity implements View.OnClickLis
     protected void initListeners() {
         Log.d(TAG, "initListeners: " + bt_enter);
         super.initListeners();
-        bt_enter.setOnClickListener(this);
-        bt_login_or_register.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            //点击登录注册按钮
-            case R.id.bt_login_or_register:
-                startActivityAfterFinishTish(LoginOrRegisterActivity.class);
-                setShowGuide();
-                break;
-            //点击立即体验按钮
-            case R.id.bt_enter:
-                startActivityAfterFinishTish(MainActivity.class);
-                setShowGuide();
-                break;
-        }
+    @OnClick(R.id.bt_login_or_register)
+    public void onClickLoginOrRegister(){
+        startActivityAfterFinishTish(LoginOrRegisterActivity.class);
+        setShowGuide();
+    }
+
+    @OnClick(R.id.bt_enter)
+    public void onClickEnter(){
+        startActivityAfterFinishTish(MainActivity.class);
+        setShowGuide();
     }
 
     /**
