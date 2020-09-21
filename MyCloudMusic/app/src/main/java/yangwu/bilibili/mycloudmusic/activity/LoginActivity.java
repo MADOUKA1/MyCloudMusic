@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import yangwu.bilibili.mycloudmusic.R;
 import yangwu.bilibili.mycloudmusic.util.LogUtils;
+import yangwu.bilibili.mycloudmusic.util.StringUtil;
 import yangwu.bilibili.mycloudmusic.util.ToastUtil;
 
 public class LoginActivity extends BaseTitleActivity {
@@ -38,22 +39,30 @@ public class LoginActivity extends BaseTitleActivity {
         String username = et_username.getText().toString().trim();
         if(StringUtils.isBlank(username)){
             LogUtils.w(TAG,"onLoginClick user empty");
-            ToastUtil.errorShortToast(getMainActivity(),R.string.enter_username);
+            ToastUtil.errorShortToast(R.string.enter_username);
             //Toasty.error(getMainActivity(),R.string.enter_username,Toasty.LENGTH_SHORT).show();
             //Toast.makeText(getMainActivity(), "user empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!(StringUtil.isPhone(username) || (StringUtil.isEmail(username)))){
+            ToastUtil.errorShortToast(R.string.error_username_format);
             return;
         }
         //获取密码
         String password = et_password.getText().toString().trim();
         if(StringUtils.isBlank(password)){
             LogUtils.w(TAG,"onLoginClick password empty");
-            ToastUtil.errorShortToast(getMainActivity(),R.string.enter_password);
+            ToastUtil.errorShortToast(R.string.enter_password);
             //Toast.makeText(getMainActivity(), "password empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!StringUtil.isPassword(password)){
+            ToastUtil.errorShortToast(R.string.error_password_format);
             return;
         }
 
         //调用登录方法
-        ToastUtil.successShortToast(getMainActivity(),R.string.login_sucess);
+        ToastUtil.successShortToast(R.string.login_sucess);
     }
     /**
      * 忘记密码点击

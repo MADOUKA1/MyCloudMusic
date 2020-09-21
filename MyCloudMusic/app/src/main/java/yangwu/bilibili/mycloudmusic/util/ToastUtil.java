@@ -11,26 +11,33 @@ import yangwu.bilibili.mycloudmusic.activity.BaseCommonActivity;
 
 public class ToastUtil {
     /**
+     * 初始化方法
+     */
+    private static Context context;
+    public static void init(Context context) {
+        ToastUtil.context = context;
+    }
+
+    /**
      * 显示短消息
-     * @param context
      * @param id
      */
-    public static void errorShortToast(@NonNull Context context, @StringRes int id) {
+    public static void errorShortToast( @StringRes int id) {
         Toasty.error(context,id,Toasty.LENGTH_SHORT).show();
     }
-    public static void successShortToast(@NonNull Context context, @StringRes int id) {
+    public static void successShortToast( @StringRes int id) {
         Toasty.success(context,id,Toasty.LENGTH_SHORT).show();
     }
     /**
      * 传递长消息
-     * @param context
      * @param id
      */
-    public static void errorLongToast(@NonNull Context context, @StringRes int id) {
+    public static void errorLongToast( @StringRes int id) {
         Toasty.error(context,id,Toasty.LENGTH_LONG).show();
     }
-    public static void successLongToast(@NonNull Context context, @StringRes int id) {
+    public static void successLongToast( @StringRes int id) {
         Toasty.success(context,id,Toasty.LENGTH_LONG).show();
     }
+
 
 }
